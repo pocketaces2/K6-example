@@ -1,5 +1,7 @@
 import http from 'k6/http';
 import {googleGetter} from "./externalGoogleFunc.js";
+import {Rate, Trend} from "k6/metrics";
+const trendK6Resp = new Trend('k6_resp', true)
 
 
 export const options = {
@@ -30,7 +32,8 @@ export const options = {
 };
 
 export default function () {
-    http.get('https://test-api.k6.io/public/crocodiles/1/');
+    let k6Response =  http.get('https://test-api.k6.io/public/crocodiles/1/');
+    trendK6Resp.add(k6Response.timings.duration);
     //sleep(1);
 }
 
