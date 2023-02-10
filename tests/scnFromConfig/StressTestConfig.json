@@ -1,0 +1,12 @@
+{
+  "scenarios": {
+    "example_scenario": {
+      "executor": "shared-iterations",
+      "startTime": "3s",
+      "gracefulStop": "5s",
+      "vus": 2,
+      "iterations": 2,
+      "maxDuration": "2m"
+    }
+  }
+}
